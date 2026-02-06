@@ -1,0 +1,290 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  min-height: 100vh;
+  color: #fff;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.header p {
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.judges {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.judge {
+  text-align: center;
+  padding: 15px 25px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+}
+
+.judge .emoji {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.judge .name {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.judge .desc {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.input-section {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.input-section textarea {
+  width: 100%;
+  height: 150px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 15px;
+  color: #fff;
+  font-size: 1rem;
+  resize: vertical;
+  margin-bottom: 15px;
+}
+
+.input-section textarea:focus {
+  outline: none;
+  border-color: #ff6b35;
+}
+
+.input-section textarea::placeholder {
+  color: #666;
+}
+
+.btn {
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  color: #fff;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.chat-section {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.chat-section h2 {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.chat-message {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  border-left: 4px solid;
+}
+
+.chat-message.gemini {
+  border-color: #4285f4;
+}
+
+.chat-message.minimax {
+  border-color: #9c27b0;
+}
+
+.chat-message.kimi {
+  border-color: #ffc107;
+}
+
+.chat-message .header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.chat-message .header .emoji {
+  font-size: 1.5rem;
+}
+
+.chat-message .header .name {
+  font-weight: bold;
+}
+
+.chat-message .content {
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #888;
+  padding: 20px;
+}
+
+.loading .spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #333;
+  border-top-color: #ff6b35;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.leaderboard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 30px;
+}
+
+.leaderboard h2 {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.leaderboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.leaderboard-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.leaderboard-item .rank {
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 40px;
+  text-align: center;
+}
+
+.leaderboard-item .rank.gold {
+  color: #ffd700;
+}
+
+.leaderboard-item .rank.silver {
+  color: #c0c0c0;
+}
+
+.leaderboard-item .rank.bronze {
+  color: #cd7f32;
+}
+
+.leaderboard-item .info {
+  flex: 1;
+}
+
+.leaderboard-item .title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.leaderboard-item .quote {
+  font-size: 0.9rem;
+  color: #888;
+  font-style: italic;
+}
+
+.leaderboard-item .score {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ff6b35;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 8px;
+  color: #888;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab.active {
+  background: #ff6b35;
+  color: #fff;
+}
+
+.tab:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.15);
+}

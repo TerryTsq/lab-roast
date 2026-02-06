@@ -113,14 +113,32 @@ npm install
 npm run dev
 ```
 
+## 🌐 Web 界面
+
+除了命令行，还提供 Web 界面：
+
+```bash
+cd web
+npm install
+npm run dev
+```
+
+打开 http://localhost:3000 即可使用。
+
+功能：
+- 📝 粘贴论文摘要或 arXiv 链接
+- 🎭 实时观看群聊吐槽过程
+- 🏆 吐槽排行榜（被吐槽最惨 Top 10）
+
 ## 🗺️ Roadmap
 
 - [x] 基础群聊吐槽功能
+- [x] Web 界面
+- [x] 吐槽排行榜
 - [ ] 支持 PDF 解析
 - [ ] 支持 arXiv 链接
 - [ ] 支持代码仓库吐槽
-- [ ] Web 界面
-- [ ] 吐槽排行榜
+- [ ] 后端 API 服务
 
 ## 📄 License
 
