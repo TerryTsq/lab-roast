@@ -1,5 +1,67 @@
 # 🔥 Lab Roast
 
+[English](#english) | [中文](#中文)
+
+---
+
+<a name="english"></a>
+## English
+
+**AI Group Roast Your Paper** — Gemini, MiniMax, Kimi debate and roast your academic work
+
+> "Isn't this just a variant of that 2019 paper?" —— Gemini
+> 
+> "Can it be deployed? What's the latency?" —— MiniMax
+> 
+> "Only 3 seeds and you claim SOTA?" —— Kimi
+
+### 🎭 What is this?
+
+A tool that lets three AI models discuss (roast) your paper in a group chat.
+
+Not taking turns — **real group chat** with replies, rebuttals, and pile-ons.
+
+### 🚀 Quick Start
+
+```bash
+# Install
+npm install -g lab-roast
+
+# Roast a paper
+lab-roast ./my_paper.pdf
+
+# Or use arXiv link
+lab-roast https://arxiv.org/abs/2401.12345
+
+# English output
+lab-roast ./paper.pdf --language en
+```
+
+### 🤖 The Three Judges
+
+| Model | Persona | Style |
+|-------|---------|-------|
+| 💎 **Gemini** | Google Academic | Cites papers, theoretical |
+| 🔮 **MiniMax** | Pragmatic Engineer | Deployment-focused |
+| 🌙 **Kimi** | Nitpicker Expert | Finds every flaw |
+
+### ⚙️ Configuration
+
+Create `.env` file:
+
+```bash
+GEMINI_API_KEY=your_key
+MINIMAX_API_KEY=your_key
+KIMI_API_KEY=your_key
+# Or use OpenRouter
+OPENROUTER_API_KEY=your_key
+```
+
+---
+
+<a name="中文"></a>
+## 中文
+
 **AI 群聊吐槽你的论文** — Gemini、MiniMax、Kimi 三大模型围攻你的学术成果
 
 > "这方法不就是 2019 年那篇的变体吗？" —— Gemini
@@ -8,13 +70,13 @@
 > 
 > "就跑了 3 个 seed，结果可信吗？" —— Kimi
 
-## 🎭 这是什么？
+### 🎭 这是什么？
 
 一个让三个 AI 模型在群聊里讨论（吐槽）你论文的工具。
 
 不是轮流发言，是**真正的群聊**——互相接话、反驳、抬杠、补刀。
 
-## 🚀 快速开始
+### 🚀 快速开始
 
 ```bash
 # 安装
@@ -25,11 +87,34 @@ lab-roast ./my_paper.pdf
 
 # 或者用 arXiv 链接
 lab-roast https://arxiv.org/abs/2401.12345
+
+# 中文输出（默认）
+lab-roast ./paper.pdf --language zh
 ```
 
-## 🎬 真实输出示例
+### 🤖 三位评委
 
-> 以下是真实运行结果，三个模型互相接话、反驳、补刀：
+| 模型 | 人设 | 风格 |
+|------|------|------|
+| 💎 **Gemini** | Google 学院派 | 爱引用论文反驳，学术范儿 |
+| 🔮 **MiniMax** | 国产实用派 | 关注落地、部署、性能 |
+| 🌙 **Kimi** | 卷王挑刺派 | 质疑工作量，善于找漏洞 |
+
+### ⚙️ 配置
+
+创建 `.env` 文件：
+
+```bash
+GEMINI_API_KEY=your_key
+MINIMAX_API_KEY=your_key
+KIMI_API_KEY=your_key
+# 或使用 OpenRouter
+OPENROUTER_API_KEY=your_key
+```
+
+---
+
+## 🎬 Demo Output / 示例输出
 
 ```
 🔥 Lab Roast - AI 群聊吐槽大会
@@ -53,97 +138,46 @@ lab-roast https://arxiv.org/abs/2401.12345
    p 值怕不是刚好蹭到 0.049 吧！我赌五毛他们没搜 learning rate，
    作者现在立刻去实验室通宵把 seeds 加到 10 个，不然这文章连综测都过不去！
 
-🔮 MiniMax：
-   @Kimi 说得对啊，3 个随机种子就想证明 SOTA，这简直就是在"碰运气"。
-   这方法听起来就像是为了刷榜而生，实际应用场景怕是凤毛麟角。
-   说到底，能部署才是王道！
-
-🌙 Kimi：
-   "代码即将开源"？这"即将"是量子态吗，reviewers 都还没测就敢写？
-   今晚别睡了，先把 Dockerfile 和 conda env 固化下来，
-   明早看不到误差条我就去 OpenReview 上实名怼。
-
 ──────────────────────────────────────────────────
 ```
 
-完整输出见 [examples/demo-output.txt](./examples/demo-output.txt)
-
-## 🤖 三位评委
-
-| 模型 | 人设 | 风格 |
-|------|------|------|
-| 💎 **Gemini** | Google 学院派 | 爱引用论文反驳，学术范儿 |
-| 🔮 **MiniMax** | 国产实用派 | 关注落地、部署、性能 |
-| 🌙 **Kimi** | 卷王挑刺派 | 质疑工作量，善于找漏洞 |
-
-## ⚙️ 配置
-
-创建 `.env` 文件：
-
-```bash
-GEMINI_API_KEY=your_gemini_key
-MINIMAX_API_KEY=your_minimax_key
-KIMI_API_KEY=your_kimi_key
-```
-
-或者使用环境变量。
-
-## 📦 API 使用
+## 📦 API Usage / API 使用
 
 ```javascript
 import { labRoast } from 'lab-roast';
 
 const result = await labRoast({
-  input: './paper.pdf',  // 或 arXiv URL
-  rounds: 6,             // 对话轮数 (默认 6)
-  language: 'zh',        // 输出语言 (zh/en)
+  input: './paper.pdf',
+  rounds: 6,
+  language: 'zh',  // 'zh' | 'en'
 });
 
-console.log(result.chat);      // 群聊记录
-console.log(result.score);     // 综合评分
-console.log(result.advice);    // 认真建议
+console.log(result.chat);
+console.log(result.score);
+console.log(result.advice);
 ```
-
-## 🛠️ 本地开发
-
-```bash
-git clone https://github.com/TerryTsq/lab-roast.git
-cd lab-roast
-npm install
-npm run dev
-```
-
-## 🌐 Web 界面
-
-除了命令行，还提供 Web 界面：
-
-```bash
-cd web
-npm install
-npm run dev
-```
-
-打开 http://localhost:3000 即可使用。
-
-功能：
-- 📝 粘贴论文摘要或 arXiv 链接
-- 🎭 实时观看群聊吐槽过程
-- 🏆 吐槽排行榜（被吐槽最惨 Top 10）
 
 ## 🗺️ Roadmap
 
-- [x] 基础群聊吐槽功能
-- [x] Web 界面
-- [x] 吐槽排行榜
-- [ ] 支持 PDF 解析
-- [ ] 支持 arXiv 链接
-- [ ] 支持代码仓库吐槽
-- [ ] 后端 API 服务
+- [x] Core roast functionality / 基础群聊吐槽功能
+- [x] Web UI / Web 界面
+- [x] Leaderboard / 吐槽排行榜
+- [x] i18n (zh/en) / 中英文支持
+- [ ] PDF parsing / PDF 解析
+- [ ] arXiv link support / arXiv 链接支持
+
+## 🤝 Related Projects / 相关项目
+
+- [StatCheck](https://github.com/TerryTsq/statcheck) — Serious version / 严肃分析版
+- [Citely](https://citely.ai) — Citation verification / 引用验证
+- [DeepCode](https://github.com/HKUDS/DeepCode) — Paper reproduction / 论文复现
 
 ## 📄 License
 
 MIT
 
 ---
+
+**Star ⭐ if you want more papers to be roasted!**
 
 **Star ⭐ 一下，让更多科研人被 AI 群嘲！**
